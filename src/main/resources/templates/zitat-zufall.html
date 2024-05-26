@@ -10,13 +10,12 @@
 
     <h1>Zitatesammlung: Zufälliges Zitat</h1>
 
-    <p th:text="${zitat}"></p>    
-    <br><br>
+    <p th:text="${zitat_text}"></p>
 
     <p class="klein">
-        Zitat Nr. <span th:text="${id}"></span> 
-        von 
-        <!--<span th:text="${anzahlZitate}"></span>-->
+        Zitat Nr. <span th:text="${zitat_id}"></span>
+        von
+        <span th:text="${anzahl_zitate}"></span>
     </p>
 
 </body>
