@@ -144,6 +144,7 @@ public class ThymeleafController {
 	    final Optional<ZitatEntity> zitatOptional = _zitateRepo.getZufallsZitat();
 	    
 	    String zitat = "";
+	    int    id    = -1;
 	    
 	    if ( zitatOptional.isEmpty() ) {
 	        
@@ -153,9 +154,11 @@ public class ThymeleafController {
 	        
 	        final ZitatEntity zufallsEntity = zitatOptional.get();
 	        zitat = zufallsEntity.getZitat();
+	        id    = (int) zufallsEntity.getId().intValue();
 	    }
 	    
 	    model.addAttribute( "zitat", zitat );
+	    model.addAttribute( "id"   , id );
 	    
 	    return "zitat-zufall";
 	}
