@@ -153,6 +153,7 @@ public class ThymeleafController {
 	    } else {
 
 	        final ZitatEntity zufallsEntity = zitatOptional.get();
+	        
 	        zitat = zufallsEntity.getZitat();
 	        id    = (int) zufallsEntity.getId().intValue();
 	    }
