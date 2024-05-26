@@ -10,14 +10,20 @@
 
     <h1>Zitatesammlung: Suchergebnis</h1>
 
-    <p>
+    <p th:if="${#lists.size(ergebnisListe) > 0}">
         Anzahl Treffer für Suchbegriff "<span th:text="${suchbegriff}">Suchbegriff</span>":
         &nbsp;
         <span th:text="${#lists.size(ergebnisListe)}">0</span>
     </p>
+    <p th:if="${#lists.size(ergebnisListe) == 0}">
+        Keine Treffer für Suchbegriff "<span th:text="${suchbegriff}">Suchbegriff</span>".
+    </p>    
     <br><br>
 
     <p th:each="zitat : ${ergebnisListe}" th:text="${zitat.getZitat()}">
     </p>
+    <br><br>
+
+    <a href="../suche.html">Weitere Suche</a>
 
 </body>

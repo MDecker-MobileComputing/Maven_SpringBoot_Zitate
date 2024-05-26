@@ -22,14 +22,25 @@ import de.eldecker.dhbw.spring.zitate.db.ZitatEntity;
 @RequestMapping( "/app/" )
 public class ThymeleafController {
 
-    @Autowired
+    /** Repo-Bean für Fuzzy-Suche. */
     private FuzzySuche _fuzzySuche;
+    
+    
+    /**
+     * Konstruktor für <i>Dependency Injection</i>. 
+     */
+    @Autowired
+    public ThymeleafController ( FuzzySuche fuzzySuche ) {
+        
+        _fuzzySuche = fuzzySuche;
+    }
     
     
 	/**
 	 * Controller-Methode für Suche.
 	 *
-	 * @param suchbegriff In Suchformular eingegebener Suchbegriff; obligatorisch.
+	 * @param suchbegriff In Suchformular eingegebener Suchbegriff; obligatorisch;
+	 *                    muss nach Trimming mindestens drei Zeichen lang sein.
 	 *
 	 * @param model Objekt für Platzhalterwerte in Template.
 	 *
@@ -39,7 +50,13 @@ public class ThymeleafController {
 	public String suche( @RequestParam(value = "suchbegriff", required = true ) String suchbegriff,
 			             Model model ) {
 
-		final String suchbegriffTrimmed = suchbegriff.trim();
+		final String suchbegriffTrimmed = suchbegriff.trim();		
+		if ( suchbegriffTrimmed.length() < 4 ) {
+		    
+		    model.addAttribute( "fehlermeldung", 
+		                        "Suchbegriff \"" + suchbegriffTrimmed + "\" hat weniger als drei Buchstaben." );
+		    return "suche-fehler";
+		}
 
 		final List<ZitatEntity> ergebnisListe = _fuzzySuche.searchFuzzy( suchbegriffTrimmed, 10, 2 );
 		
