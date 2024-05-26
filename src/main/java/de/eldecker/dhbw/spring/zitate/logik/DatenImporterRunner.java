@@ -49,8 +49,8 @@ public class DatenImporterRunner implements ApplicationRunner {
 		final long anzahlZitateAlt = _repo.count();
 		if ( anzahlZitateAlt > 0 ) {
 			
-			LOG.info( "Es sind schon {} Zitate in der Datenbank, deshalb werden keine Daten importiert." );
-			
+			LOG.info( "Es sind schon {} Zitate in der Datenbank, deshalb werden keine Daten importiert.", 
+					  anzahlZitateAlt );
 		} else {
 			
 			LOG.info( "Noch keine Zitate in der Datenbank, lade jetzt welche ..." );
