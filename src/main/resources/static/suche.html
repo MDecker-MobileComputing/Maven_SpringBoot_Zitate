@@ -12,7 +12,16 @@
 
   <form action="/app/suche" method="get">
 
-    <input type="text" name="suchbegriff">
+    <label for="suchbegriff">Suchbegriff:</label>
+    <input type="text" id="suchbegriff" name="suchbegriff">
+    <br><br>
+
+    <label for="maxTreffer">Maximale Treffer:</label>
+    <input type="number" id="maxTreffer" name="maxTreffer" min="1" value="10">
+    <br><br>
+  
+    <label for="fuzziness">Fuzziness:</label>
+    <input type="number" id="fuzziness" name="fuzziness" min="0" value="2">
     <br><br>
 
     <input type="submit" value="Suchen"      >

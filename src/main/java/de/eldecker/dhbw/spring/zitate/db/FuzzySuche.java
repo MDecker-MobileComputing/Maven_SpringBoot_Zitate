@@ -43,7 +43,7 @@ public class FuzzySuche {
 	 * @param maxTreffer Max. Treffer, die zurück geliefert werden soll
 	 * 
 	 * @param maxEditDistance Wert für max. erlaubte "Unschärfe" bei Fuzzy-Search;
-	 *                        je höher der Wetter, desto "ungenauere" Treffer werden
+	 *                        je höher der Wert, desto "ungenauere" Treffer werden
 	 *                        noch gefunden
 	 *                        
 	 * @return Liste der Ergebnisse

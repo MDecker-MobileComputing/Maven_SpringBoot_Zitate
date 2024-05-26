@@ -1,6 +1,7 @@
 package de.eldecker.dhbw.spring.zitate.web;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import de.eldecker.dhbw.spring.zitate.db.FuzzySuche;
 import de.eldecker.dhbw.spring.zitate.db.ZitatEntity;
+import de.eldecker.dhbw.spring.zitate.db.ZitateRepo;
 import de.eldecker.dhbw.spring.zitate.helferlein.ZitateException;
 
 
@@ -31,14 +33,19 @@ public class ThymeleafController {
     /** Repo-Bean für Fuzzy-Suche. */
     private final FuzzySuche _fuzzySuche;
     
+    /** Repo-Bean für "normalen" Zugriff auf Datenbanktabelle mit Zitaten. */
+    private final ZitateRepo _zitateRepo;
+    
     
     /**
      * Konstruktor für <i>Dependency Injection</i>. 
      */
     @Autowired
-    public ThymeleafController ( FuzzySuche fuzzySuche ) {
+    public ThymeleafController ( FuzzySuche fuzzySuche,
+                                 ZitateRepo zitateRepo ) {
         
         _fuzzySuche = fuzzySuche;
+        _zitateRepo = zitateRepo;
     }
     
     
@@ -105,12 +112,12 @@ public class ThymeleafController {
 		if ( maxTreffer < 1 || maxTreffer > 500 ) {
 
 		    throw new ZitateException( 
-		            "Paramter \"maxTreffer\" liegt nicht im zulässigen Bereich von 1-500: " + maxTreffer );
+		            "Parameter \"maxTreffer\" liegt nicht im zulässigen Bereich von 1-500: " + maxTreffer );
 		}		    
-        if ( fuzzyMaxEditDistance < 1 || fuzzyMaxEditDistance > 10 ) {
+        if ( fuzzyMaxEditDistance < 0 || fuzzyMaxEditDistance > 10 ) {
 
             throw new ZitateException( 
-                    "Paramter \"fuzzyMaxEditDistance\" liegt nicht im zulässigen Bereich von 1-10: " + 
+                    "Parameter \"fuzzyMaxEditDistance\" liegt nicht im zulässigen Bereich von 0-10: " + 
                     fuzzyMaxEditDistance );
         }           
 		
@@ -121,6 +128,36 @@ public class ThymeleafController {
 		model.addAttribute( "ergebnisListe", ergebnisListe      );
 
 		return "suche-ergebnis";
+	}
+	
+	
+	/**
+	 * Controller-Methode für Seite, die ein zufällig ausgewähltes Zitat enthält.
+	 * 
+	 * @param model Objekt für Platzhalterwerte in Template.
+	 * 
+	 * @return Name der Template-Datei "zitat-zufall.html" ohne Datei-Endung
+	 */
+	@GetMapping( "/zufall" )
+	public String zufaelligesZitat( Model model ) {
+	    
+	    final Optional<ZitatEntity> zitatOptional = _zitateRepo.getZufallsZitat();
+	    
+	    String zitat = "";
+	    
+	    if ( zitatOptional.isEmpty() ) {
+	        
+	        zitat = "Kein zufälliges Zitat gefunden (ist die Datenbank leer?)";
+	        
+	    } else {
+	        
+	        final ZitatEntity zufallsEntity = zitatOptional.get();
+	        zitat = zufallsEntity.getZitat();
+	    }
+	    
+	    model.addAttribute( "zitat", zitat );
+	    
+	    return "zitat-zufall";
 	}
 
 }
