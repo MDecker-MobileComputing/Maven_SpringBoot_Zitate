@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 
+/**
+ * Diese Repo-Bean implementiert die Fuzzy-Suche mit Lucene. 
+ */
 @Repository
 public class FuzzySuche {
 
@@ -21,9 +24,13 @@ public class FuzzySuche {
 	 * Methode nach:
 	 * https://www.springcloud.io/post/2022-04/spring-boot-hibernate-search/
 	 * 
-	 * @param suchbegriff
-	 * @param maxTreffer
-	 * @param maxEditDistance
+	 * @param suchbegriff Suchbegriff
+	 * 
+	 * @param maxTreffer Max. Treffer, die zurück geliefert werden soll
+	 * 
+	 * @param maxEditDistance Wert für max. erlaubte "Unschärfe" bei Fuzzy-Search;
+	 *                        je höher der Wetter, desto "ungenauere" Treffer werden
+	 *                        noch gefunden
 	 * @return
 	 */
 	public List<ZitatEntity> searchFuzzy( String suchbegriff, int maxTreffer, int maxEditDistance ) {
