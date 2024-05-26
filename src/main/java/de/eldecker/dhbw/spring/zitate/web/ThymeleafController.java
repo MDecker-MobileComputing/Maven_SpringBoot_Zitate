@@ -98,9 +98,9 @@ public class ThymeleafController {
 	 *                         verarbeitet.
 	 */
 	@GetMapping( "/suche" )
-	public String suche( @RequestParam(value = "suchbegriff", required = true ) String suchbegriff,
-	                     @RequestParam(value = "maxTreffer" , required = false, defaultValue = "10") int maxTreffer,
-						 @RequestParam(value = "fuzziness"  , required = false, defaultValue = "2")  int fuzzyMaxEditDistance,
+	public String suche( @RequestParam(value = "suchbegriff", required = true                      ) String suchbegriff      ,
+	                     @RequestParam(value = "maxTreffer" , required = false, defaultValue = "10") int maxTreffer          ,
+						 @RequestParam(value = "fuzziness"  , required = false, defaultValue = "2" ) int fuzzyMaxEditDistance,
 			             Model model ) throws ZitateException {
 
 		final String suchbegriffTrimmed = suchbegriff.trim();
@@ -132,7 +132,7 @@ public class ThymeleafController {
 
 
 	/**
-	 * Controller-Methode für Seite, die ein zufällig ausgewähltes Zitat enthält.
+	 * Controller-Methode für Seite, die ein zufällig ausgewähltes Zitat anzeigt.
 	 *
 	 * @param model Objekt für Platzhalterwerte in Template.
 	 *
