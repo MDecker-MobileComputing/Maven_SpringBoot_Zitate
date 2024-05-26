@@ -19,6 +19,11 @@ import jakarta.persistence.Table;
  * Definition der Entität/DB-Tabelle für die Zitate.
  * Die eigentliche Zitate werden mit Lucene für die Volltextsuche
  * indiziert.
+ * <br><br>
+ * 
+ * Lucene wird seinen Index für diese Tabelle im Unterordner
+ * {@code ZitatEntity/} im Wurzelverzeichnis des Maven-Projekts
+ * ablegen.
  */
 @Entity
 @Table( name = "Zitate" )
@@ -141,10 +146,6 @@ public class ZitatEntity {
             return true;
         }
         if ( obj == null ) {
-
-            return false;
-        }
-        if ( getClass() != obj.getClass() ) {
 
             return false;
         }
