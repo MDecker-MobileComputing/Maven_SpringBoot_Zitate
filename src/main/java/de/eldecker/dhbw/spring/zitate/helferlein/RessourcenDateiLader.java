@@ -23,53 +23,53 @@ import org.springframework.stereotype.Component;
 @Component
 public class RessourcenDateiLader {
 
-    private static Logger LOG = LoggerFactory.getLogger( RessourcenDateiLader.class );    
-    
+    private static Logger LOG = LoggerFactory.getLogger( RessourcenDateiLader.class );
+
     /** Bean zum Laden von Ressourcen-Dateien. */
     private final ResourceLoader _resourceLoader;
 
-    
+
     /**
      * Konstruktor für <i>Dependency Injection</i>.
      */
     @Autowired
     public RessourcenDateiLader( ResourceLoader resourceLoader ) {
-        
-        _resourceLoader = resourceLoader; 
+
+        _resourceLoader = resourceLoader;
     }
 
-    
+
     /**
      * Zeilen einer Textdatei aus dem Ressourcen-Ordner laden.
-     * 
+     *
      * @param pfad Pfad zur Datei relativ im Ressourcen-Ordner, z.B. {@code "zitate.txt"}
-     * 
+     *
      * @return Liste der eingelesenen Zeilen; kann leer sein, aber nicht {@code null}.
      */
     public List<String> ladeZeilenAusRessourcenDatei( String pfad ) {
-        
-        final String resourceLocation = "classpath:" + pfad; 
-        
+
+        final String resourceLocation = "classpath:" + pfad;
+
         final Resource resource = _resourceLoader.getResource( resourceLocation );
-        
+
         try {
 
             final Path path = resource.getFile().toPath();
-            
-            final List<String> stringListe = Files.readAllLines(path, UTF_8); // throws IOException
-            
-            LOG.info( "Anzahl der Zeilen aus Ressourcen-Datei \"{}\" eingelesen: {}", 
+
+            final List<String> stringListe = Files.readAllLines( path, UTF_8 ); // throws IOException
+
+            LOG.info( "Anzahl der Zeilen aus Ressourcen-Datei \"{}\" eingelesen: {}",
                       path, stringListe.size() );
-            
+
             return stringListe;
         }
         catch ( IOException ex ) {
-            
-            LOG.error( "Fehler beim Versuch die Ressourcendatei \"{}\" einzulesen: ", 
+
+            LOG.error( "Fehler beim Versuch die Ressourcendatei \"{}\" einzulesen: ",
                        pfad, ex );
-            
+
             return emptyList();
         }
-    }    
-    
+    }
+
 }
