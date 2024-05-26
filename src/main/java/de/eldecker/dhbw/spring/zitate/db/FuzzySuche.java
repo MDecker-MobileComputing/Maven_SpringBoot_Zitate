@@ -31,7 +31,8 @@ public class FuzzySuche {
 	 * @param maxEditDistance Wert für max. erlaubte "Unschärfe" bei Fuzzy-Search;
 	 *                        je höher der Wetter, desto "ungenauere" Treffer werden
 	 *                        noch gefunden
-	 * @return
+	 *                        
+	 * @return Liste der Ergebnisse
 	 */
 	public List<ZitatEntity> searchFuzzy( String suchbegriff, int maxTreffer, int maxEditDistance ) {
 		

@@ -1,10 +1,16 @@
 package de.eldecker.dhbw.spring.zitate.web;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import de.eldecker.dhbw.spring.zitate.db.FuzzySuche;
+import de.eldecker.dhbw.spring.zitate.db.ZitatEntity;
 
 
 /**
@@ -16,6 +22,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping( "/app/" )
 public class ThymeleafController {
 
+    @Autowired
+    private FuzzySuche _fuzzySuche;
+    
+    
 	/**
 	 * Controller-Methode für Suche.
 	 *
@@ -31,7 +41,10 @@ public class ThymeleafController {
 
 		final String suchbegriffTrimmed = suchbegriff.trim();
 
-		model.addAttribute( "suchbegriff", suchbegriffTrimmed );
+		final List<ZitatEntity> ergebnisListe = _fuzzySuche.searchFuzzy( suchbegriffTrimmed, 10, 2 );
+		
+		model.addAttribute( "suchbegriff"  , suchbegriffTrimmed );
+		model.addAttribute( "ergebnisListe", ergebnisListe      );
 
 		return "suche-ergebnis";
 	}

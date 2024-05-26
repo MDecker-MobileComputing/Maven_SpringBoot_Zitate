@@ -13,7 +13,11 @@
     <p>
         Anzahl Treffer für Suchbegriff "<span th:text="${suchbegriff}">Suchbegriff</span>":
         &nbsp;
+        <span th:text="${#lists.size(ergebnisListe)}">0</span>
+    </p>
+    <br><br>
 
+    <p th:each="zitat : ${ergebnisListe}" th:text="${zitat.getZitat()}">
     </p>
 
 </body>
