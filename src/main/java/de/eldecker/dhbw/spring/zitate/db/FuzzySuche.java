@@ -17,12 +17,26 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class FuzzySuche {
 
+	/** Zentrales API-Objekt für JPA (welches wir bei "Spring Data JPA" normalerweise nicht brauchen). */
+	private final EntityManager _entityManager;
+	
+	
+    /**
+     * Konstruktor für <i>Dependency Injection</i>. 
+     */
 	@Autowired
-	private EntityManager _entityManager;
+	public FuzzySuche( EntityManager entityManager ) {
+	    
+	    _entityManager = entityManager;
+	}
+	
 
 	/**
-	 * Methode nach:
-	 * https://www.springcloud.io/post/2022-04/spring-boot-hibernate-search/
+	 * Methode für Fuzzy-Suche nach Zitaten.
+	 * <br><br>
+	 * 
+	 * Vorlage für diese Methode:
+	 * <a href="https://www.springcloud.io/post/2022-04/spring-boot-hibernate-search/">dieser Artikel</a> 
 	 * 
 	 * @param suchbegriff Suchbegriff
 	 * 

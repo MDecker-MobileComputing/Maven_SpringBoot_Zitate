@@ -23,7 +23,7 @@ import de.eldecker.dhbw.spring.zitate.db.ZitatEntity;
 public class ThymeleafController {
 
     /** Repo-Bean für Fuzzy-Suche. */
-    private FuzzySuche _fuzzySuche;
+    private final FuzzySuche _fuzzySuche;
     
     
     /**
