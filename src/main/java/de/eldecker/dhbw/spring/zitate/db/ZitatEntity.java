@@ -39,7 +39,7 @@ public class ZitatEntity {
 	/**
 	 * Feld mit eigentlichem Zitat, wird von Lucene indiziert.
 	 */
-    @FullTextField()
+    @FullTextField
     @Column(name = "zitat", length = 9999)
     private String zitat;
 
