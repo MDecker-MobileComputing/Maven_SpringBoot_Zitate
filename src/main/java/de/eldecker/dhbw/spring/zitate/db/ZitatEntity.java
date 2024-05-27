@@ -22,8 +22,7 @@ import jakarta.persistence.Table;
  * <br><br>
  * 
  * Lucene wird seinen Index für diese Tabelle im Unterordner
- * {@code ZitatEntity/} im Wurzelverzeichnis des Maven-Projekts
- * ablegen.
+ * {@code ZitatEntity/} des Maven-Projekts ablegen. 
  */
 @Entity
 @Table( name = "Zitate" )
@@ -91,7 +90,7 @@ public class ZitatEntity {
 
 
 	/**
-	 * Setter für den eigentlichen Text des Zitats
+	 * Setter für den eigentlichen Text des Zitats.
 	 *
 	 * @param zitat Text des Zitats
 	 */

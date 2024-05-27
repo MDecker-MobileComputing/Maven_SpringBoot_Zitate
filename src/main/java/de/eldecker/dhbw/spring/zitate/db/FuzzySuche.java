@@ -40,7 +40,7 @@ public class FuzzySuche {
 	 * 
 	 * @param suchbegriff Suchbegriff
 	 * 
-	 * @param maxTreffer Max. Treffer, die zurück geliefert werden soll
+	 * @param maxTreffer Maximale Anzahl Treffer, die zurück geliefert werden soll
 	 * 
 	 * @param maxEditDistance Wert für max. erlaubte "Unschärfe" bei Fuzzy-Search;
 	 *                        je höher der Wert, desto "ungenauere" Treffer werden

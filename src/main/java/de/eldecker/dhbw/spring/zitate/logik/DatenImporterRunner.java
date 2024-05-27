@@ -41,7 +41,9 @@ import de.eldecker.dhbw.spring.zitate.helferlein.RessourcenDateiLader;
  * </li>
  * <li>
  *   Wenn eine nur aus einem Punkt bestehende Zeile kommt, dann
- *   ist das Ende eines Zitats erreicht.
+ *   enthielt die vorherige Zeile die letzte Zeilen eines Zitats
+ *   und die nächste Zeile enthält die erste Zeile eines anderen
+ *   Zitats.
  * </li>
  * <li>
  *   Die Textdatei muss in UTF8 kodiert sein.

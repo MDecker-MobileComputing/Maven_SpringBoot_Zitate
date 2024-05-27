@@ -13,7 +13,7 @@ public interface ZitateRepo extends JpaRepository<ZitatEntity, Long> {
 
     /**
      * Native Query (!) für das Holen eines zufälligen Zitats, kein JPQL!
-     * Funktioniert evtl. auf anderen Datenbank als H2 nicht.
+     * Funktioniert evtl. nicht, wenn andere Datenbank als "H2" verwendet wird.
      *
      * @return Optional mit zufällig ausgewähltem Zitat
      */
