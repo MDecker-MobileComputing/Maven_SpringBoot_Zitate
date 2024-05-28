@@ -120,7 +120,6 @@ public class DatenImporterRunner implements ApplicationRunner {
 			    _zitateRepo.saveAll( zitatEntityListe );
 			}
 
-
 			final long anzahlZitateNeu = _zitateRepo.count();
 			LOG.info( "Es wurden {} Zitate in die Datenbank geladen.", anzahlZitateNeu );
 		}
