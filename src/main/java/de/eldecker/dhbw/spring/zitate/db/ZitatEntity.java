@@ -134,24 +134,18 @@ public class ZitatEntity {
 	 * @param obj Zu vergleichendes Objekt
 	 *
 	 * @return {@code true} gdw. {obj} auch eine Instanz von {@link ZitatEntity}
-	 *         ist und die relevanten Attribute (aber nicht die ID, die ist evtl.
-	 *         noch nicht von JPA gesetzt) denselben Wert haben.
+	 *         ist und die relevanten Attribute außer ID (weil die von JPA evtl.
+	 *         noch nicht gesetzt) denselben Wert haben (derzeit nur "zitat").
 	 */
     @Override
     public boolean equals( Object obj ) {
 
-        if ( this == obj ) {
-
-            return true;
-        }
-        if ( obj == null ) {
-
-            return false;
-        }
-
+        if ( this == obj ) { return true;  }
+        
+        if ( obj == null ) { return false; }
         if ( obj instanceof ZitatEntity anderesObjekt ) {
 
-        	return zitat.equals( anderesObjekt.zitat );
+        	return Objects.equals( zitat, anderesObjekt.zitat ); 
 
         } else {
 
