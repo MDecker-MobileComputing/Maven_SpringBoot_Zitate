@@ -143,6 +143,7 @@ public class ZitatEntity {
         if ( this == obj ) { return true;  }
         
         if ( obj == null ) { return false; }
+        
         if ( obj instanceof ZitatEntity anderesObjekt ) {
 
         	return Objects.equals( zitat, anderesObjekt.zitat ); 
