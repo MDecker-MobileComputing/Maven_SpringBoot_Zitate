@@ -38,6 +38,15 @@ public class ZitatEntity {
 
 	/**
 	 * Feld mit eigentlichem Zitat, wird von Lucene indiziert.
+	 * <br><br>
+	 * 
+	 * Wenn das Feld nicht mit {@code FullTextField} annotiert wird, 
+	 * dann wird bei der Suche in der Klasse {@code FuzzySuche}
+	 * eine Exception mit folgender Fehlermeldung ausgelöst:
+	 * <pre>
+	 * "HSEARCH000610: Unknown field 'zitat'. Context: 
+	 * indexes [ZitatEntity]"
+	 * </pre>
 	 */
     @FullTextField
     @Column(name = "zitat", length = 9999)
