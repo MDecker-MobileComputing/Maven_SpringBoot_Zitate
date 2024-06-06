@@ -111,9 +111,10 @@ public class DatenImporterRunner implements ApplicationRunner {
 
 			    final List<String> zitatListe = zeilenZuZitate( zeilenListe );
 
-			    final List<ZitatEntity> zitatEntityListe = zitatListe.stream()
-			                                                         .map( zitatString -> new ZitatEntity( zitatString ) )
-			                                                         .toList();
+                final List<ZitatEntity> zitatEntityListe = 
+                        zitatListe.stream()
+                                  .map( zitatString -> new ZitatEntity( zitatString ) )
+                                  .toList();
 
 			    LOG.info( "Anzahl Zitate gefunden: {}", zitatListe.size() );
 
@@ -145,7 +146,7 @@ public class DatenImporterRunner implements ApplicationRunner {
 	    String zitat = "";
 	    for ( String zeile: zeilenListe ) {
 
-	        if ( zeile.trim().equals( ".") ) {
+	        if ( zeile.trim().equals( "." ) ) {
 
 	            ergebnisListe.add( zitat );
 	            zitat = "";

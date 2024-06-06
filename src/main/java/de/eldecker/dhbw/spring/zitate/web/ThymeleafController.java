@@ -106,7 +106,7 @@ public class ThymeleafController {
 		final String suchbegriffTrimmed = suchbegriff.trim();
 		if ( suchbegriffTrimmed.length() < 4 ) {
 
-		    throw new ZitateException( "Suchbegriff \"" + suchbegriffTrimmed + "\" hat weniger als drei Buchstaben." );
+		    throw new ZitateException( "Suchbegriff \"" + suchbegriffTrimmed + "\" hat weniger als vier Buchstaben." );
 
 		}
 		if ( maxTreffer < 1 || maxTreffer > 500 ) {
