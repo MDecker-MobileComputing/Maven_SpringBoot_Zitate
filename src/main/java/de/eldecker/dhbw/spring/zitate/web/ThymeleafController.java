@@ -122,7 +122,7 @@ public class ThymeleafController {
         }
 
 		final List<ZitatEntity> ergebnisListe =
-					_fuzzySuche.searchFuzzy( suchbegriffTrimmed, maxTreffer, 2 );
+					_fuzzySuche.sucheFuzzy( suchbegriffTrimmed, maxTreffer, 2 );
 
 		model.addAttribute( "suchbegriff"  , suchbegriffTrimmed );
 		model.addAttribute( "ergebnisListe", ergebnisListe      );

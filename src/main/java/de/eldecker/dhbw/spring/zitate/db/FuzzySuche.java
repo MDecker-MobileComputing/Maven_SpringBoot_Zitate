@@ -48,7 +48,7 @@ public class FuzzySuche {
 	 *                        
 	 * @return Liste der Ergebnisse
 	 */
-	public List<ZitatEntity> searchFuzzy( String suchbegriff, int maxTreffer, int maxEditDistance ) {
+	public List<ZitatEntity> sucheFuzzy( String suchbegriff, int maxTreffer, int maxEditDistance ) {
 		
         final SearchSession searchSession = Search.session( _entityManager );
 

@@ -13,6 +13,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 
 /**
@@ -52,7 +53,7 @@ public class ZitatEntity {
     @Column(name = "zitat", length = 9999)
     private String zitat;
 
-
+    
     /**
      * Default-Konstruktor, wird von JPA benötigt.
      */
