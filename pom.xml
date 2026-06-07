@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.4.5</version>
+		<version>3.5.14</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -21,7 +21,7 @@
 
 		<java.version>21</java.version>
 
-		<hibernate.search.version>7.2.3.Final</hibernate.search.version>
+		<hibernate.search.version>7.2.2.Final</hibernate.search.version>
 		<!-- für neueste Version siehe https://mvnrepository.com/artifact/org.hibernate.search/hibernate-search-backend-lucene -->
 
 	</properties>
